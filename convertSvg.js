@@ -1,6 +1,7 @@
 console.log("script started");
 
 const fs = require("fs");
+const { optimize } = require("svgo");
 
 const startPath = "./svg/";
 const targetPath = "./demo/src/";
@@ -16,21 +17,34 @@ fs.readdir(startPath, (err, folder) => {
         console.error(err);
         return;
       }
-
+      const result = optimize(data, {
+        path: startPath + file,
+        multipass: true,
+      });
+      const optimizedData = result.data;
+      console.log(
+        "SVG optimized: " + data.length + " to " + optimizedData.length
+      );
+      const filename =
+        file.slice(0, -4)[0].toUpperCase() + file.slice(0, -4).slice(1);
       fs.writeFile(
-        targetPath + file.slice(0, -4) + ".tsx",
+        targetPath + filename + ".tsx",
         "import React from 'react';" +
-          "\nfunction App() {" +
+          "\nfunction " +
+          filename +
+          "() {" +
           "\n\treturn (\n\t" +
-          data +
+          optimizedData +
           "\n\t);" +
           "\n}" +
-          "\nexport default App;",
+          "\nexport default " +
+          filename +
+          ";",
         (err) => {
           if (err) {
             console.error(err);
           }
-          console.log("created: ", file.slice(0, -4) + ".tsx");
+          console.log("created: ", filename + ".tsx");
           // file written successfully
         }
       );
