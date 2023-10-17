@@ -3,7 +3,9 @@ console.log("script started");
 const fs = require("fs");
 const { optimize } = require("svgo");
 
+// start dir
 const startPath = "./svg/";
+// target dir
 const targetPath = "./demo/src/";
 
 fs.readdir(startPath, (err, folder) => {
@@ -17,6 +19,7 @@ fs.readdir(startPath, (err, folder) => {
         console.error(err);
         return;
       }
+      //boptimize svg
       const result = optimize(data, {
         path: startPath + file,
         multipass: true,
