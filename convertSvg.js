@@ -6,7 +6,7 @@ const { optimize } = require("svgo");
 // start dir
 const startPath = "./svg/";
 // target dir
-const targetPath = "./demo/src/";
+const targetPath = "./demo/src/results/";
 
 fs.readdir(startPath, (err, folder) => {
   console.log(folder);
