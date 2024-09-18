@@ -54,5 +54,3 @@ fs.readdir(startPath, (err, folder) => {
     });
   });
 });
-
-// test
