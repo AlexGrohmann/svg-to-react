@@ -1,0 +1,18 @@
+import React from "react";
+function Trash_full() {
+  return (
+    <svg
+      width="2400"
+      height="2400"
+      viewBox="0 0 2400 2400"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1700 2200H700C589.543 2200 500 2110.46 500 2000V700H300V500H700V400C700 289.543 789.543 200 900 200H1500C1610.46 200 1700 289.543 1700 400V500H2100V700H1900V2000C1900 2110.46 1810.46 2200 1700 2200ZM700 700V2000H1700V700H700ZM900 400V500H1500V400H900ZM1500 1800H1300V900H1500V1800ZM1100 1800H900V900H1100V1800Z"
+        fill="#2E3A59"
+      />
+    </svg>
+  );
+}
+export default Trash_full;
